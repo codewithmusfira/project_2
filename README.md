@@ -1,47 +1,115 @@
-Lab 5: OCR Basics (Document Intelligence)
+Document Intelligence API
 
-This lab focuses on building a basic Optical Character Recognition (OCR) system to extract text from images such as receipts. The project demonstrates how to use OCR tools and improve their accuracy through image preprocessing techniques.
+A complete AI-powered document processing system built with Python and FastAPI. This project performs OCR, document classification, and information extraction from uploaded document images such as invoices, receipts, and contracts.
 
-🚀 Key Objectives
-
-Implement OCR using Tesseract and EasyOCR
-
-Extract text from scanned documents and receipt images
-
-Apply image preprocessing using OpenCV
-
-Compare OCR performance before and after preprocessing
-
-Build a simple receipt parser using regex
-
-🧠 Core Concepts
-
-Optical Character Recognition (OCR)
-
-Image preprocessing (grayscale, noise reduction, thresholding)
-
-Confidence scoring and result evaluation
-
-Text extraction and structured data parsing
-
-🛠️ Technologies Used
-
+Features
+OCR text extraction using Tesseract
+Document classification using Machine Learning
+TF-IDF text vectorization
+Information extraction (dates, amounts, entities)
+REST API built with FastAPI
+Interactive Swagger API documentation
+End-to-end document processing pipeline
+Technologies Used
 Python
-
+FastAPI
+Scikit-learn
 Tesseract OCR
+TF-IDF Vectorizer
+Logistic Regression
+Joblib
+Pillow (PIL)
+Project Workflow
 
-EasyOCR
+Image Upload → OCR → Text Extraction → TF-IDF Vectorization → Document Classification → Information Extraction → JSON Response
 
-OpenCV
+Supported Document Types
+Invoices
+Receipts
+Contracts
+Project Structure
+project/
+│
+├── training_data/
+│   ├── invoices/
+│   ├── receipts/
+│   └── contracts/
+│
+├── models/
+│   ├── vectorizer.pkl
+│   └── classifier.pkl
+│
+├── api/
+│   └── main.py
+│
+├── week8_classifier_and_api.ipynb
+└── README.md
+Installation
 
-PIL (Python Imaging Library)
+Clone the repository:
 
-📊 Outcomes
+git clone <your-repo-link>
+cd <repo-name>
 
-Improved OCR accuracy through preprocessing
+Install required libraries:
 
-Successful text extraction from multiple receipt images
+pip install fastapi uvicorn python-multipart scikit-learn pytesseract pillow joblib
+Run the API
+cd api
+uvicorn main:app --reload
 
-Comparison of different OCR methods
+Server will run at:
 
-Basic document intelligence pipeline implementation
+http://127.0.0.1:8000
+API Endpoints
+1. /classify
+
+Classifies uploaded documents into invoice, receipt, or contract.
+
+2. /extract
+
+Extracts important information such as:
+
+Dates
+Amounts
+Entities
+3. /process
+
+Complete pipeline:
+
+OCR
+Classification
+Information Extraction
+Swagger Documentation
+
+Open the interactive API documentation:
+
+http://127.0.0.1:8000/docs
+Machine Learning Model
+TF-IDF Vectorizer
+Logistic Regression Classifier
+Accuracy target: 90%+
+Output Example
+{
+  "document_type": "invoice",
+  "confidence": 0.96,
+  "extracted_data": {
+    "dates": ["12/05/2026"],
+    "amounts": ["$250"],
+    "entities": ["Company ABC"]
+  },
+  "status": "success"
+}
+Future Improvements
+Add more document types
+Deploy on cloud platforms
+Improve OCR accuracy
+Add deep learning models
+Support PDF files
+Author
+
+Musfira Nazahat
+
+License
+
+This project is for educational and learning purposes.
